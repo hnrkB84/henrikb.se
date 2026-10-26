@@ -1,0 +1,296 @@
+<!doctype html>
+<html lang="sv">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>henrikb.se</title>
+<meta name="description" content="Ett ställe för det jag testar, gör och printar.">
+<meta name="theme-color" content="#0A241C">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="preload" href="assets/fonts/source-serif-4-latin-600-normal.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+@font-face{font-family:"Serif";src:url(assets/fonts/source-serif-4-latin-400-normal.woff2) format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:"Serif";src:url(assets/fonts/source-serif-4-latin-600-normal.woff2) format("woff2");font-weight:600;font-display:swap}
+@font-face{font-family:"Serif";src:url(assets/fonts/source-serif-4-latin-700-normal.woff2) format("woff2");font-weight:700;font-display:swap}
+@font-face{font-family:"Sans";src:url(assets/fonts/source-sans-3-latin-400-normal.woff2) format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:"Sans";src:url(assets/fonts/source-sans-3-latin-500-normal.woff2) format("woff2");font-weight:500;font-display:swap}
+@font-face{font-family:"Sans";src:url(assets/fonts/source-sans-3-latin-600-normal.woff2) format("woff2");font-weight:600;font-display:swap}
+
+/* Färger hämtade ur loggan */
+:root{
+  --night:#0A241C;      /* sidans bakgrund, djupare än loggans grön */
+  --forest:#003B2A;     /* loggans grön */
+  --raise:#0F3328;      /* upphöjda ytor */
+  --cream:#F6F0DE;      /* text, loggans krämvita */
+  --sage:#A8B8AC;       /* dämpad text */
+  --sun:#E2A93E;        /* loggans sol, används sparsamt */
+  --line:rgba(246,240,222,.12);
+  --serif:"Serif",Georgia,"Times New Roman",serif;
+  --sans:"Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;background:var(--night)}
+body{margin:0;min-height:100vh;display:flex;flex-direction:column;background:var(--night);color:var(--cream);font:400 17px/1.6 var(--sans);-webkit-font-smoothing:antialiased}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--sun);outline-offset:3px;border-radius:3px}
+.wrap{max-width:760px;margin:0 auto;padding:0 20px;width:100%;flex:1;display:flex;flex-direction:column}
+main{flex:1}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+
+/* ---------- Topp ---------- */
+.top{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:22px 0}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+.brand img{width:38px;height:38px}
+.brand span{font:600 19px/1 var(--serif);letter-spacing:.005em}
+nav{display:flex;align-items:center;gap:4px;flex-wrap:wrap;justify-content:flex-end}
+nav a{text-decoration:none;color:var(--sage);font-size:15.5px;padding:6px 10px;border-radius:6px}
+nav a:hover{color:var(--cream)}
+nav a[aria-current="page"]{color:var(--cream);background:var(--raise)}
+nav a.chip{margin-left:6px;border:1px solid var(--line);color:var(--cream);padding:5px 12px;border-radius:999px;font-size:14.5px}
+nav a.chip:hover{border-color:var(--sun)}
+nav a.chip[aria-current="page"]{border-color:var(--sun);background:transparent}
+
+/* ---------- Hero ---------- */
+.hero{display:grid;grid-template-columns:200px 1fr;gap:44px;align-items:center;padding:52px 0 40px}
+.treeline{display:block;width:100%;height:56px;margin:0 0 44px;border-bottom:1px solid #12392D}
+.hero img{width:200px;height:200px}
+.hero h1{font:600 clamp(30px,5vw,42px)/1.15 var(--serif);margin:0 0 14px;letter-spacing:-.005em;max-width:16ch}
+.hero p{margin:0;color:var(--sage);font-size:17.5px;max-width:38ch}
+
+/* ---------- Sektioner ---------- */
+.block{padding:0 0 56px}
+.block h2{font:600 15px/1 var(--sans);color:var(--sage);margin:0 0 6px;padding-bottom:14px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:baseline;letter-spacing:.01em}
+.block h2 a{font-weight:500;color:var(--sage);text-decoration:none;font-size:14.5px}
+.block h2 a:hover{color:var(--cream)}
+
+/* Projekt: kompakt lista */
+.proj{list-style:none;margin:0;padding:0}
+.proj li{border-bottom:1px solid var(--line)}
+.proj a,.proj .nolink{display:grid;grid-template-columns:1fr auto;gap:2px 16px;padding:16px 0;text-decoration:none}
+.proj .t{font:600 19px/1.3 var(--serif)}
+.proj .host{color:var(--sage);font-size:14px;align-self:center}
+.proj .d{grid-column:1/-1;color:var(--sage);font-size:15.5px}
+.proj a:hover .t{color:var(--sun)}
+
+/* Inlägg */
+.feed{list-style:none;margin:0;padding:0}
+.feed li{border-bottom:1px solid var(--line)}
+.feed a{display:grid;grid-template-columns:1fr 112px;gap:20px;padding:22px 0;text-decoration:none;align-items:start}
+.feed a.noimg{grid-template-columns:1fr}
+.meta{font-size:14px;color:var(--sage);display:flex;gap:12px;margin-bottom:6px}
+.cat{color:var(--sun);font-weight:500}
+.feed h3{font:600 22px/1.25 var(--serif);margin:0 0 6px}
+.feed p{margin:0;color:var(--sage);font-size:16px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.feed img{width:112px;height:84px;object-fit:cover;border-radius:6px;background:var(--raise)}
+.feed a:hover h3{color:var(--sun)}
+.empty{color:var(--sage);padding:20px 0}
+
+/* ---------- Kategorisida ---------- */
+.pagehead{padding:44px 0 28px}
+.pagehead h1{font:600 clamp(32px,5vw,44px)/1.1 var(--serif);margin:0 0 8px}
+.pagehead p{margin:0;color:var(--sage)}
+
+/* ---------- Ett inlägg ---------- */
+.post{max-width:640px;padding:36px 0 64px}
+.back{display:inline-block;color:var(--sage);text-decoration:none;font-size:15px;margin-bottom:28px}
+.back:hover{color:var(--cream)}
+.post h1{font:700 clamp(32px,6vw,46px)/1.12 var(--serif);margin:6px 0 24px;letter-spacing:-.01em}
+.post .hero-img{width:100%;border-radius:8px;margin:0 0 28px;display:block}
+.prose{font:400 19px/1.7 var(--serif)}
+.prose p{margin:0 0 1.1em}
+.prose a{color:var(--sun);text-underline-offset:3px}
+.prose strong{font-weight:700}
+.visit{display:inline-block;margin-top:12px;padding:10px 16px;border:1px solid var(--sun);border-radius:8px;text-decoration:none;font-weight:500}
+.visit:hover{background:var(--sun);color:var(--night)}
+.tags{list-style:none;margin:36px 0 0;padding:20px 0 0;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;gap:8px}
+.tags a{display:inline-block;text-decoration:none;font-size:14.5px;color:var(--sage);border:1px solid var(--line);border-radius:999px;padding:4px 12px}
+.tags a:hover{color:var(--cream);border-color:var(--sun)}
+
+/* ---------- Fot ---------- */
+footer{border-top:1px solid var(--line);padding:32px 0 48px;display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
+.motto{font:600 15px/1 var(--serif);font-variant-caps:small-caps;letter-spacing:.14em;color:var(--sage);display:flex;align-items:center;gap:10px}
+.motto::before{content:"";width:9px;height:9px;border-radius:50%;background:var(--sun)}
+footer .links{display:flex;gap:18px;font-size:15px}
+footer .links a{color:var(--sage);text-decoration:none}
+footer .links a:hover{color:var(--cream)}
+
+@media (max-width:640px){
+  .top{flex-direction:column;align-items:flex-start;gap:10px}
+  nav{justify-content:flex-start;margin-left:-10px}
+  .hero{grid-template-columns:1fr;gap:24px;padding:24px 0 48px;text-align:left}
+  .hero img{width:150px;height:150px}
+  .treeline{height:40px;margin-bottom:32px}
+  .feed a{grid-template-columns:1fr 84px;gap:14px}
+  .feed img{width:84px;height:84px}
+}
+@media (prefers-reduced-motion:no-preference){
+  .hero img{animation:rise .7s ease-out both}
+  @keyframes rise{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <a class="brand" href="./">
+      <img src="assets/favicon.svg" alt="" width="38" height="38">
+      <span>henrikb.se</span>
+    </a>
+    <nav id="nav" aria-label="Kategorier"></nav>
+  </header>
+
+  <main id="main"><p class="empty">Laddar…</p></main>
+
+  <footer>
+    <div class="motto">Simplex et Constans</div>
+    <div class="links">
+      <a href="mailto:hnrkB84@outlook.com">Mejla mig</a>
+      <a href="https://github.com/hnrkb84" rel="noopener">GitHub</a>
+    </div>
+  </footer>
+</div>
+
+<script>
+/* ===================== CONFIG ===================== */
+const CONFIG = {
+  dataUrl: 'data/posts.json',
+  feedLimit: 10,                 // antal inlägg under "Senaste" på startsidan
+  // Taggarna som syns i menyn. Alla andra taggar fungerar också, de syns bara inte i menyn.
+  menu: ['Teknik','Prints','Hemautomation'],
+  menuChip: 'HV71',              // den lilla knappen längst till höger
+  // Kort text överst på en taggs sida (valfritt)
+  intros: {
+    'Teknik':'Saker jag testar och bygger.',
+    'Prints':'Det som kommit ut ur 3D-skrivaren.',
+    'Hemautomation':'Home Assistant, n8n och sånt som sköter sig självt.',
+    'HV71':'Tankar om HV71.'
+  }
+};
+/* ================================================== */
+
+const MONTHS=['januari','februari','mars','april','maj','juni','juli','augusti','september','oktober','november','december'];
+const $=id=>document.getElementById(id);
+function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function niceDate(d){const [y,m,day]=String(d).split('-');return `${+day} ${MONTHS[m-1]} ${y}`}
+function safeUrl(u){return /^https?:\/\//.test(u||'')?u:''}
+function host(u){try{return new URL(u).hostname.replace(/^www\./,'')}catch(e){return ''}}
+function same(a,b){return String(a).toLowerCase()===String(b).toLowerCase()}
+function tagsOf(p){return Array.isArray(p.tags)?p.tags.filter(Boolean):[]}
+function tagUrl(t){return '?t='+encodeURIComponent(t)}
+function plain(t){return String(t||'').replace(/\*\*(.+?)\*\*/g,'$1').replace(/\[([^\]]+)\]\([^)]+\)/g,'$1').replace(/\s+/g,' ').trim()}
+function fmt(text){
+  return esc(text).trim().split(/\n{2,}/).map(p=>'<p>'+p
+    .replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>')
+    .replace(/\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)|(https?:\/\/[^\s<]+)/g,(m,t,u,bare)=>bare
+      ? `<a href="${bare}" rel="noopener">${bare}</a>`
+      : `<a href="${u}" rel="noopener">${t}</a>`)
+    .replace(/\n/g,'<br>')+'</p>').join('');
+}
+
+function renderNav(active){
+  const link=(t,chip)=>`<a href="${tagUrl(t)}"${chip?' class="chip"':''}${active&&same(active,t)?' aria-current="page"':''}>${esc(t)}</a>`;
+  $('nav').innerHTML=CONFIG.menu.map(t=>link(t,false)).join('')+(CONFIG.menuChip?link(CONFIG.menuChip,true):'');
+}
+
+function tagLine(p){
+  const t=tagsOf(p);
+  return t.length?`<span class="cat">${t.map(esc).join(', ')}</span>`:'';
+}
+function feedItem(p){
+  const img=p.image?`<img src="${esc(p.image)}" alt="" loading="lazy">`:'';
+  return `<li><a href="?p=${encodeURIComponent(p.id)}"${img?'':' class="noimg"'}>
+    <div>
+      <div class="meta">${tagLine(p)}<time datetime="${esc(p.date)}">${niceDate(p.date)}</time></div>
+      <h3>${esc(p.title)}</h3>
+      <p>${esc(plain(p.text))}</p>
+    </div>${img}</a></li>`;
+}
+function feed(list){
+  return list.length?`<ul class="feed">${list.map(feedItem).join('')}</ul>`:'<p class="empty">Inget här än.</p>';
+}
+function projectList(list){
+  return `<ul class="proj">${list.map(p=>{
+    const url=safeUrl(p.link);
+    const inner=`<span class="t">${esc(p.title)}</span>${url?`<span class="host">${esc(host(url))}</span>`:''}<span class="d">${esc(plain(p.text))}</span>`;
+    return `<li>${url?`<a href="${esc(url)}" rel="noopener">${inner}</a>`:`<div class="nolink">${inner}</div>`}</li>`;
+  }).join('')}</ul>`;
+}
+
+function viewHome(posts){
+  const projects=posts.filter(p=>p.kind==='projekt');
+  const latest=posts.filter(p=>p.kind!=='projekt').slice(0,CONFIG.feedLimit);
+  document.title='henrikb.se';
+  return `
+  <section class="hero">
+    <img src="assets/logo.svg" alt="henrikb.se-loggan: granskog, sjö och sol" width="200" height="200">
+    <div>
+      <h1>Det jag testar, gör och printar.</h1>
+      <p>Ett litet hörn av nätet där jag samlar mina projekt. Henrik, Eksjö.</p>
+    </div>
+  </section>
+  <img class="treeline" src="assets/treeline.svg" alt="">
+
+  <section class="block" aria-labelledby="h-senaste">
+    <h2 id="h-senaste">Senaste</h2>
+    ${feed(latest)}
+  </section>
+
+  ${projects.length?`
+  <section class="block" aria-labelledby="h-projekt">
+    <h2 id="h-projekt">Projekt</h2>
+    ${projectList(projects)}
+  </section>`:''}`;
+}
+
+function viewTag(posts,tag){
+  const hits=posts.filter(p=>tagsOf(p).some(t=>same(t,tag)));
+  const name=(hits.length&&tagsOf(hits[0]).find(t=>same(t,tag)))||tag;
+  const intro=Object.entries(CONFIG.intros).find(([k])=>same(k,tag));
+  const projects=hits.filter(p=>p.kind==='projekt'), list=hits.filter(p=>p.kind!=='projekt');
+  document.title=name+' – henrikb.se';
+  return `<div class="pagehead"><h1>${esc(name)}</h1>${intro?`<p>${esc(intro[1])}</p>`:''}</div>
+    <section class="block">${feed(list)}</section>
+    ${projects.length?`<section class="block"><h2>Projekt</h2>${projectList(projects)}</section>`:''}`;
+}
+
+function viewPost(posts,id){
+  const p=posts.find(x=>x.id===id);
+  if(!p)return viewNotFound();
+  document.title=p.title+' – henrikb.se';
+  const url=safeUrl(p.link);
+  const tags=tagsOf(p);
+  return `<article class="post">
+    <a class="back" href="./">Till startsidan</a>
+    <div class="meta"><time datetime="${esc(p.date)}">${niceDate(p.date)}</time></div>
+    <h1>${esc(p.title)}</h1>
+    ${p.image?`<img class="hero-img" src="${esc(p.image)}" alt="">`:''}
+    <div class="prose">${fmt(p.text)}</div>
+    ${url?`<a class="visit" href="${esc(url)}" rel="noopener">Öppna ${esc(host(url))}</a>`:''}
+    ${tags.length?`<ul class="tags" aria-label="Taggar">${tags.map(t=>`<li><a href="${tagUrl(t)}">${esc(t)}</a></li>`).join('')}</ul>`:''}
+  </article>`;
+}
+function viewNotFound(){
+  document.title='Hittades inte – henrikb.se';
+  return `<div class="pagehead"><h1>Hittades inte</h1><p>Sidan finns inte, eller så har inlägget tagits bort. <a href="./">Gå till startsidan</a>.</p></div>`;
+}
+
+async function start(){
+  const q=new URLSearchParams(location.search);
+  const t=q.get('t'), pid=q.get('p');
+  try{
+    const res=await fetch(CONFIG.dataUrl+'?v='+Date.now(),{cache:'no-store'});
+    const posts=(await res.json()).filter(p=>!p.draft).sort((a,b)=>b.date.localeCompare(a.date));
+    renderNav(t);
+    $('main').innerHTML=pid?viewPost(posts,pid):t?viewTag(posts,t):viewHome(posts);
+  }catch(e){
+    renderNav(t);
+    $('main').innerHTML='<p class="empty">Kunde inte hämta innehållet. Ladda om sidan.</p>';
+  }
+}
+start();
+</script>
+</body>
+</html>

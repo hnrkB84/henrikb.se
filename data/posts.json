@@ -1,0 +1,46 @@
+[
+  {
+    "id": "ny-adress",
+    "kind": "inlagg",
+    "tags": ["Teknik"],
+    "title": "Ny adress",
+    "date": "2026-10-26",
+    "text": "Nu samlar jag det jag testar, gör och printar här på henrikb.se.",
+    "link": "",
+    "image": "",
+    "draft": false
+  },
+  {
+    "id": "hv-forsta",
+    "kind": "inlagg",
+    "tags": ["HV71"],
+    "title": "Första inlägget om HV71",
+    "date": "2026-10-26",
+    "text": "Här skriver jag om HV71. Mer kommer.",
+    "link": "",
+    "image": "",
+    "draft": false
+  },
+  {
+    "id": "p-vader",
+    "kind": "projekt",
+    "tags": ["Teknik"],
+    "title": "Eksjö Väder",
+    "date": "2025-12-15",
+    "text": "Väderapp för Eksjö som går att installera på mobilen.",
+    "link": "https://5714.se",
+    "image": "",
+    "draft": false
+  },
+  {
+    "id": "p-fagelkollen",
+    "kind": "projekt",
+    "tags": ["Teknik"],
+    "title": "Fågelkollen",
+    "date": "2025-11-17",
+    "text": "Senaste fågelobservationerna i Eksjö.",
+    "link": "https://hnrkb84.github.io/fjaderrapporten/",
+    "image": "",
+    "draft": false
+  }
+]
