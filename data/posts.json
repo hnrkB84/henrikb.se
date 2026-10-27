@@ -13,19 +13,6 @@
     "draft": false
   },
   {
-    "id": "ny-adress",
-    "kind": "inlagg",
-    "tags": [
-      "Teknik"
-    ],
-    "title": "Ny adress",
-    "date": "2026-10-26",
-    "text": "Nu samlar jag det jag testar, gör och printar här på henrikb.se.",
-    "link": "",
-    "image": "",
-    "draft": false
-  },
-  {
     "id": "p-vader",
     "kind": "projekt",
     "tags": [
