@@ -33,8 +33,8 @@
     ],
     "title": "Fågelkollen",
     "date": "2025-11-17",
-    "text": "Senaste fågelobservationerna i Eksjö.",
-    "link": "https://hnrkb84.github.io/fjaderrapporten/",
+    "text": "Fågelkollen är min sida för fågelobservationer i Eksjö med omnejd. Tanken är enkel: visa vad som faktiskt setts här i trakten, snyggt och utan att man behöver gräva i stora databaser.\n\nVar kommer datan ifrån?\nAlla observationer hämtas från Artportalen, där fågelskådare över hela Sverige rapporterar vad de sett. Artportalen har ett öppet API som jag använder för att plocka ut fynden för Eksjö och Höglandet.\n\nHur hålls den uppdaterad?\nEtt par små Python-skript sköter hämtningen. De körs automatiskt via GitHub Actions på schema, så jag behöver aldrig röra något själv. Skripten sparar resultatet som JSON-filer, och sidan läser sedan in dem och visar upp observationerna.\n\nVad finns på sidan?\n\nSenaste observationerna – kort med bild, svenskt och vetenskapligt namn, kommun och läte du kan lyssna på.\nÅrets lista – alla arter som setts i området under året, sorterade efter senast observerad. Listan fylls på automatiskt varje gång nya arter dyker upp.\nVårfåglar – flyttfåglarnas återkomst under april och maj, med filter per månad.\n\nFramåt\nJag funderar på att visa riktiga foton från Artportalen istället för generiska bilder, och kanske en karta över var det skådas mest runt Eksjö.",
+    "link": "https://fagelkollen.henrikb.se",
     "image": "",
     "draft": false
   }
