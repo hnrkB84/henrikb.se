@@ -32,7 +32,7 @@
       "Teknik"
     ],
     "title": "Eksjö Väder",
-    "date": "2025-12-15",
+    "date": "2026-10-13",
     "text": "Eksjö Väder började med en enkel fråga: varför ska jag kolla vädret för “Jönköpings län” när det är Eksjö jag ska gå ut i? Svaret blev en egen väderapp som bara bryr sig om en enda plats, men gör det ordentligt.\n\nAppen visar aktuellt väder och prognos, men det roliga finns bakåt i tiden. Här finns 85 års väderhistorik, från 1940 till idag. Undrar du om det verkligen var kallare på riktigt förr, eller om det bara känns så? Nu går det att kolla. Det finns även månadsrapporter, pollenprognos, astronomi och SMHI:s varningar för länet.\n\nHur funkar det?\nPrognoserna kommer från Open-Meteo, och varningarna hämtas direkt från SMHI:s öppna data. Historiken ligger i en egen SQLite-databas som fylls på varje månad. Nederbörden hämtas dessutom från SMHI:s station i Prästkulla, eftersom den visade sig vara mer pålitlig än modellerna. En liten Python-server (FastAPI) håller ihop alltihop, och diagrammen ritas med Chart.js.\n\nAppen är en PWA, så du kan lägga den på hemskärmen och använda den som en vanlig app, helt utan App Store.\n\nVädret kan jag inte göra något åt. Men nu vet jag i alla fall exakt hur dåligt det är, och hur det står sig mot 1940.",
     "link": "https://vader.henrikb.se",
     "image": "",
