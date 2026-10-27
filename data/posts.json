@@ -26,19 +26,6 @@
     "draft": false
   },
   {
-    "id": "test-3hfpx",
-    "kind": "inlagg",
-    "tags": [
-      "Teknik"
-    ],
-    "title": "Test!",
-    "date": "2026-10-27",
-    "text": "Jag testar med ett inlägg. Men jag kan inte lägga in bilder? Det är ju lite synd eftersom det är en bra estetisk detalj som man vill ha på plats.",
-    "link": "",
-    "image": "images/2026-10-27-test-qttps.jpg",
-    "draft": false
-  },
-  {
     "id": "p-fagelkollen",
     "kind": "inlagg",
     "tags": [
