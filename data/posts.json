@@ -26,19 +26,6 @@
     "draft": false
   },
   {
-    "id": "hv-forsta",
-    "kind": "inlagg",
-    "tags": [
-      "HV71"
-    ],
-    "title": "Första inlägget om HV71",
-    "date": "2026-10-26",
-    "text": "Här skriver jag om HV71. Mer kommer.",
-    "link": "",
-    "image": "",
-    "draft": false
-  },
-  {
     "id": "p-vader",
     "kind": "projekt",
     "tags": [
