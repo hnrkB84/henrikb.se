@@ -13,6 +13,19 @@
     "draft": false
   },
   {
+    "id": "p-fagelkollen",
+    "kind": "projekt",
+    "tags": [
+      "Teknik"
+    ],
+    "title": "Fågelkollen",
+    "date": "2026-10-20",
+    "text": "Fågelkollen är min sida för fågelobservationer i Eksjö med omnejd. Tanken är enkel: visa vad som faktiskt setts här i trakten, snyggt och utan att man behöver gräva i stora databaser.\n\nVar kommer datan ifrån?\nAlla observationer hämtas från Artportalen, där fågelskådare över hela Sverige rapporterar vad de sett. Artportalen har ett öppet API som jag använder för att plocka ut fynden för Eksjö och Höglandet.\n\nHur hålls den uppdaterad?\nEtt par små Python-skript sköter hämtningen. De körs automatiskt via GitHub Actions på schema, så jag behöver aldrig röra något själv. Skripten sparar resultatet som JSON-filer, och sidan läser sedan in dem och visar upp observationerna.\n\nVad finns på sidan?\n\nSenaste observationerna – kort med bild, svenskt och vetenskapligt namn, kommun och läte du kan lyssna på.\nÅrets lista – alla arter som setts i området under året, sorterade efter senast observerad. Listan fylls på automatiskt varje gång nya arter dyker upp.\nVårfåglar – flyttfåglarnas återkomst under april och maj, med filter per månad.\n\nFramåt\nJag funderar på att visa riktiga foton från Artportalen istället för generiska bilder, och kanske en karta över var det skådas mest runt Eksjö.",
+    "link": "https://fagelkollen.henrikb.se",
+    "image": "",
+    "draft": false
+  },
+  {
     "id": "p-vader",
     "kind": "projekt",
     "tags": [
@@ -22,19 +35,6 @@
     "date": "2025-12-15",
     "text": "Eksjö Väder började med en enkel fråga: varför ska jag kolla vädret för “Jönköpings län” när det är Eksjö jag ska gå ut i? Svaret blev en egen väderapp som bara bryr sig om en enda plats, men gör det ordentligt.\n\nAppen visar aktuellt väder och prognos, men det roliga finns bakåt i tiden. Här finns 85 års väderhistorik, från 1940 till idag. Undrar du om det verkligen var kallare på riktigt förr, eller om det bara känns så? Nu går det att kolla. Det finns även månadsrapporter, pollenprognos, astronomi och SMHI:s varningar för länet.\n\nHur funkar det?\nPrognoserna kommer från Open-Meteo, och varningarna hämtas direkt från SMHI:s öppna data. Historiken ligger i en egen SQLite-databas som fylls på varje månad. Nederbörden hämtas dessutom från SMHI:s station i Prästkulla, eftersom den visade sig vara mer pålitlig än modellerna. En liten Python-server (FastAPI) håller ihop alltihop, och diagrammen ritas med Chart.js.\n\nAppen är en PWA, så du kan lägga den på hemskärmen och använda den som en vanlig app, helt utan App Store.\n\nVädret kan jag inte göra något åt. Men nu vet jag i alla fall exakt hur dåligt det är, och hur det står sig mot 1940.",
     "link": "https://vader.henrikb.se",
-    "image": "",
-    "draft": false
-  },
-  {
-    "id": "p-fagelkollen",
-    "kind": "projekt",
-    "tags": [
-      "Teknik"
-    ],
-    "title": "Fågelkollen",
-    "date": "2025-11-17",
-    "text": "Fågelkollen är min sida för fågelobservationer i Eksjö med omnejd. Tanken är enkel: visa vad som faktiskt setts här i trakten, snyggt och utan att man behöver gräva i stora databaser.\n\nVar kommer datan ifrån?\nAlla observationer hämtas från Artportalen, där fågelskådare över hela Sverige rapporterar vad de sett. Artportalen har ett öppet API som jag använder för att plocka ut fynden för Eksjö och Höglandet.\n\nHur hålls den uppdaterad?\nEtt par små Python-skript sköter hämtningen. De körs automatiskt via GitHub Actions på schema, så jag behöver aldrig röra något själv. Skripten sparar resultatet som JSON-filer, och sidan läser sedan in dem och visar upp observationerna.\n\nVad finns på sidan?\n\nSenaste observationerna – kort med bild, svenskt och vetenskapligt namn, kommun och läte du kan lyssna på.\nÅrets lista – alla arter som setts i området under året, sorterade efter senast observerad. Listan fylls på automatiskt varje gång nya arter dyker upp.\nVårfåglar – flyttfåglarnas återkomst under april och maj, med filter per månad.\n\nFramåt\nJag funderar på att visa riktiga foton från Artportalen istället för generiska bilder, och kanske en karta över var det skådas mest runt Eksjö.",
-    "link": "https://fagelkollen.henrikb.se",
     "image": "",
     "draft": false
   }
