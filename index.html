@@ -54,19 +54,30 @@ nav a.chip{margin-left:6px;border:1px solid var(--line);color:var(--cream);paddi
 nav a.chip:hover{border-color:var(--sun)}
 nav a.chip[aria-current="page"]{border-color:var(--sun);background:transparent}
 
-/* ---------- Hero ---------- */
-.hero{display:grid;grid-template-columns:168px 1fr;gap:40px;align-items:center;padding:48px 0 36px}
-.divider{display:block;width:100%;height:auto;margin:0 0 48px;opacity:.9}
-.hero img{width:168px;height:168px}
-.hero h1{font:600 clamp(30px,5vw,42px)/1.15 var(--serif);margin:0 0 14px;letter-spacing:-.005em;max-width:16ch}
-.quote{margin:0 0 18px}
-.quote blockquote{margin:0;font:400 italic 28px/1.25 var(--serif);color:var(--cream)}
+/* ---------- Hero (banner) ---------- */
+:root{--band:#0E2C22}
+.hero,.divider{background:var(--band);box-shadow:0 0 0 100vmax var(--band);clip-path:inset(0 -100vmax)}
+.hero{display:grid;grid-template-columns:auto 1fr;grid-template-areas:"logo text" "logo about";column-gap:24px;row-gap:12px;align-items:center;padding:40px 0 22px}
+.hero img{grid-area:logo;width:112px;height:112px}
+.hero-text{grid-area:text;align-self:end}
+.site-title{font:600 clamp(34px,6vw,46px)/1 var(--serif);margin:0 0 2px;letter-spacing:-.01em;color:var(--cream)}
+.site-title .dot{color:var(--sun)}
+.quote{margin:0}
+.quote blockquote{margin:0;font:400 italic 17px/1.25 var(--serif);color:var(--cream)}
 .quote blockquote::before{content:"\201C"}
 .quote blockquote::after{content:"\201D"}
-.quote figcaption{margin-top:6px;color:var(--sage);font-size:15px}
+.quote figcaption{margin-top:2px;color:var(--sage);opacity:.7;font-size:11.5px;letter-spacing:.01em}
 .quote cite{font-style:italic}
 .quote figcaption::before{content:"– "}
-.hero .about{margin:0;padding-top:16px;border-top:1px solid var(--line);color:var(--sage);font-size:16.5px;max-width:42ch}
+.hero .about{grid-area:about;align-self:start;margin:0;color:var(--sage);font-size:16px;max-width:46ch}
+.divider{display:block;width:100%;height:auto;margin:-2px 0 52px;padding:2px 0 26px;box-sizing:content-box}
+body.home .brand{visibility:hidden}
+
+/* ---------- HV71-tema (HV71-sidan och HV71-inlägg) ---------- */
+html.hv,html.hv body{--night:#0B1E3D;--raise:#132B52;--cream:#F4F6FA;--sage:#A9B6CC;--sun:#FCD213;--line:rgba(244,246,250,.13);background:#0B1E3D}
+html.hv .pagehead{position:relative;padding-left:22px}
+html.hv .pagehead::before{content:"";position:absolute;left:0;top:50px;bottom:34px;width:6px;background:var(--sun);border-radius:3px}
+html.hv nav a.chip[aria-current="page"]{background:var(--sun);color:#0B1E3D;border-color:var(--sun)}
 
 /* ---------- Sektioner ---------- */
 .block{padding:0 0 56px}
@@ -128,9 +139,13 @@ footer .links a:hover{color:var(--cream)}
 @media (max-width:640px){
   .top{flex-direction:column;align-items:flex-start;gap:10px}
   nav{justify-content:flex-start;margin-left:-10px}
-  .hero{grid-template-columns:1fr;gap:24px;padding:24px 0 48px;text-align:left}
-  .hero img{width:150px;height:150px}
-  .divider{margin-bottom:36px}
+  body.home .brand{display:none}
+  body.home .top{padding-bottom:16px}
+  .hero{grid-template-areas:"logo text" "about about";column-gap:16px;row-gap:18px;padding:24px 0 16px}
+  .hero img{width:84px;height:84px}
+  .site-title{font-size:32px}
+  .quote blockquote{font-size:16px}
+  .divider{margin-bottom:40px}
   .feed a{grid-template-columns:1fr 84px;gap:14px}
   .feed img{width:84px;height:84px}
 }
@@ -233,15 +248,15 @@ function viewHome(posts){
   document.title='henrikb.se';
   return `
   <section class="hero">
-    <img src="assets/logo.svg" alt="henrikb.se-loggan: granskog, sjö och sol" width="168" height="168">
-    <div>
-      <h1 class="sr">henrikb.se</h1>
+    <img src="assets/logo.svg" alt="henrikb.se-loggan: granskog, sjö och sol" width="112" height="112">
+    <div class="hero-text">
+      <h1 class="site-title">henrikb<span class="dot">.</span>se</h1>
       <figure class="quote">
         <blockquote lang="en">We don’t rent pigs.</blockquote>
         <figcaption><cite>Lonesome Dove</cite>, Larry McMurtry</figcaption>
       </figure>
-      <p class="about">Sidan används mest som testyta för grejer, saker, prints, teknik och annat som jag behöver ladda upp för att testa. Allt blir inte bra!</p>
     </div>
+    <p class="about">Sidan används mest som testyta för grejer, saker, prints, teknik och annat som jag behöver ladda upp för att testa. Allt blir inte bra!</p>
   </section>
   <img class="divider" src="assets/divider.webp" alt="" width="760" height="41">
 
@@ -296,6 +311,12 @@ async function start(){
     const res=await fetch(CONFIG.dataUrl+'?v='+Date.now(),{cache:'no-store'});
     const posts=(await res.json()).filter(p=>!p.draft).sort((a,b)=>b.date.localeCompare(a.date));
     renderNav(t);
+    document.body.classList.toggle('home',!pid&&!t);
+    const hvPost=pid&&posts.some(p=>p.id===pid&&tagsOf(p).some(x=>same(x,CONFIG.menuChip)));
+    const hv=(t&&same(t,CONFIG.menuChip))||hvPost;
+    document.documentElement.classList.toggle('hv',!!hv);
+    document.querySelector('meta[name="theme-color"]').setAttribute('content',hv?'#0B1E3D':'#0A241C');
+    if(hvPost)renderNav(CONFIG.menuChip);
     $('main').innerHTML=pid?viewPost(posts,pid):t?viewTag(posts,t):viewHome(posts);
   }catch(e){
     renderNav(t);
