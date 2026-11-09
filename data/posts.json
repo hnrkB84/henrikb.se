@@ -1,5 +1,16 @@
 [
   {
+    "id": "kaffe-portionsautomat-for-snabbkaffe-bel-753bn",
+    "kind": "inlagg",
+    "tags": [],
+    "title": "KAFFE  portionsautomat för snabbkaffe (Bellarom)",
+    "date": "2026-11-09",
+    "text": "# KAFFE – portionsautomat för snabbkaffe\n\nEn tryckknappsautomat för Bellaroms snabbkaffeburk. Burken står upp och ner i maskinen. Ett tryck på guldknappen ger en jämn dos rakt ner i koppen. Den är helt mekanisk, utan el och utan fjädrar, bara två gummiband.\n\n## Så funkar den\n\nEn slider med en ficka ligger under burken och fylls med kaffe. När du trycker in knappen glider fickan fram över utmatningen och dosen faller ner. När du släpper drar gummibanden tillbaka slidern, och fickan fylls igen.\n\n> **Annat kaffemärke?** Bara toppen (04) behöver ändras. Anpassa den övre delen, där burkhalsen sticker ner, efter måtten på din burk. Den nedre delen ska ha samma omkrets som förut (Ø 80 mm) så att den passar i maskinen.\n\n## Utskrift\n\nAlla delar printas utan support och ska ligga som de kommer i filen. Stativet ligger på sidan med KAFFE-sidan uppåt.\n\n| Del | Färg | Material |\n|---|---|---|\n| 01 Stativ | Svart | PETG (ca 435 g, 15 h) |\n| 02 Hörnpelare, 03 Viktlåda, 04 Topp | Svart | PETG |\n| 05 Lucka, 06 Slider, 07 Knapp, 08 Pinnar, 09 Bokstäver, 10 Coaster | Guld | PLA |\n\n**Du behöver också:** 2 gummiband och något tungt till viktlådan.\n\n## Montering\n\n1. Skjut in slidern bakifrån i huvudet, med den smala änden först, tills den sticker ut fram. Trä på knappen.\n2. Stick ner en pinne genom spåret på ovansidan, ner i hålet i slidern. Tryck ner de två andra pinnarna i hålen bredvid.\n3. Spänn ett gummiband från varje sidopinne till mittpinnen.\n4. Skjut in hörnpelaren från höger sida, fram vid öppningen.\n5. Fyll viktlådan med någon tyngd, t.ex. en påse sand, skruv eller muttrar, och skjut in den bakifrån i foten.\n6. Limma bokstäverna i fördjupningarna och lägg coastern i gropen.\n7. Skjut in luckan i toppen. Sätt toppen på burken och vänd. Ställ toppen i huvudet och dra ut luckan tills linjen syns.\n\n## Byta burk\n\nSkjut in luckan, lyft av, byt burk och vänd. Inget spill.",
+    "link": "",
+    "image": "",
+    "draft": true
+  },
+  {
     "id": "17-sekunder-fran-ett-steg-uppat-1v4t5",
     "kind": "inlagg",
     "tags": [
