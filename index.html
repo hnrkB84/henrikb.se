@@ -57,7 +57,7 @@ nav a.chip[aria-current="page"]{border-color:var(--sun);background:transparent}
 /* ---------- Hero (banner) ---------- */
 :root{--band:#0E2C22}
 .hero,.divider{background:var(--band);box-shadow:0 0 0 100vmax var(--band);clip-path:inset(0 -100vmax)}
-.hero{display:grid;grid-template-columns:auto 1fr;grid-template-areas:"logo text" "logo about";column-gap:24px;row-gap:12px;align-items:center;padding:40px 0 22px}
+.hero{display:grid;grid-template-columns:auto 1fr;grid-template-areas:"logo text" "logo about" "logo links";column-gap:24px;row-gap:12px;align-items:center;padding:40px 0 22px}
 .hero img{grid-area:logo;width:112px;height:112px}
 .hero-text{grid-area:text;align-self:end}
 .site-title{font:600 clamp(34px,6vw,46px)/1 var(--serif);margin:0 0 2px;letter-spacing:-.01em;color:var(--cream)}
@@ -70,6 +70,23 @@ nav a.chip[aria-current="page"]{border-color:var(--sun);background:transparent}
 .quote cite{font-style:italic}
 .quote figcaption::before{content:"– "}
 .hero .about{grid-area:about;align-self:start;margin:0;color:var(--sage);font-size:16px;max-width:46ch}
+/* ---------- Banner (startsidan) ---------- */
+body{overflow-x:clip}
+.banner{margin:0 calc(50% - 50vw);background:#0E2C22}
+.banner img{display:block;width:100%;height:clamp(150px,13.6vw,320px);object-fit:cover;object-position:center}
+.intro{display:flex;align-items:center;justify-content:space-between;gap:14px 20px;flex-wrap:wrap;padding:26px 0 48px}
+.tagline{margin:0;font:400 italic 21px/1.3 var(--serif);color:var(--cream)}
+/* Genvägar till mina andra sidor */
+.shortcuts{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
+.shortcuts a{display:inline-flex;align-items:center;gap:8px;min-height:40px;padding:0 16px 0 12px;border:1px solid;border-radius:999px;text-decoration:none;font:600 15px/1 var(--sans);-webkit-tap-highlight-color:transparent;transition:transform .15s,filter .15s}
+.shortcuts svg{width:20px;height:20px;flex:none}
+.shortcuts a:hover,.shortcuts a:active{transform:translateY(-1px);filter:brightness(1.15)}
+/* Väder: himmelsblå med sol */
+.shortcuts .sc-vader{background:linear-gradient(135deg,#1E4E7A,#2F6FA3);border-color:#5E9BD0;color:#F4F8FC}
+/* Fågelkollen: skog och fågel */
+.shortcuts .sc-fagel{background:linear-gradient(135deg,#2E4A1F,#4A6B2C);border-color:#86A85A;color:#F2F5EA}
+/* HV71: marinblå och gult */
+.shortcuts .sc-hv{background:#0B1E3D;border-color:#FCD213;color:#FCD213}
 .divider{display:block;width:100%;height:auto;margin:-2px 0 52px;padding:2px 0 26px;box-sizing:content-box}
 body.home .brand{visibility:hidden}
 
@@ -106,6 +123,14 @@ html.hv nav a.chip[aria-current="page"]{background:var(--sun);color:#0B1E3D;bord
 .feed img{width:112px;height:84px;object-fit:cover;border-radius:6px;background:var(--raise)}
 .feed a:hover h3{color:var(--sun)}
 .empty{color:var(--sage);padding:20px 0}
+/* HV71-inlägg i flödet skuggas blått */
+.feed li.hv{padding:8px 0}
+.feed li.hv a{background:linear-gradient(90deg,#0F2A55,#0B1E3D);margin:0 -14px;padding:16px 14px 16px 18px;border-radius:10px;box-shadow:inset 4px 0 0 #FCD213}
+.feed li.hv .cat{color:#FCD213}
+.feed li.hv p,.feed li.hv .meta{color:#A9B6CC}
+.feed li.hv a:hover h3{color:#FCD213}
+html.hv .feed li.hv{padding:0}
+html.hv .feed li.hv a{background:none;box-shadow:none;margin:0;padding:22px 0;border-radius:0}
 
 /* ---------- Kategorisida ---------- */
 .pagehead{padding:44px 0 28px}
@@ -151,9 +176,14 @@ footer .links a:hover{color:var(--cream)}
   nav{justify-content:flex-start;margin-left:-10px}
   body.home .brand{display:none}
   body.home .top{padding-bottom:16px}
-  .hero{grid-template-areas:"logo text" "about about";column-gap:16px;row-gap:18px;padding:24px 0 16px}
+  .intro{padding:20px 0 36px}
+  .tagline{font-size:19px}
+  .hero{grid-template-areas:"logo text" "about about" "links links";column-gap:16px;row-gap:18px;padding:24px 0 16px}
   .hero img{width:84px;height:84px}
   .site-title{font-size:32px}
+  .shortcuts{gap:6px}
+  .shortcuts a{padding:0 11px 0 9px;gap:6px;font-size:14px}
+  .shortcuts svg{width:18px;height:18px}
   .quote blockquote{font-size:16px}
   .divider{margin-bottom:40px}
   .feed a{grid-template-columns:1fr 84px;gap:14px}
@@ -195,6 +225,12 @@ const CONFIG = {
   // Taggarna som syns i menyn. Alla andra taggar fungerar också, de syns bara inte i menyn.
   menu: ['Teknik','Prints','Hemautomation'],
   menuChip: 'HV71',              // den lilla knappen längst till höger
+  // Genvägsknapparna under texten på startsidan
+  shortcuts: [
+    {text:'Eksjö Väder', url:'https://vader.henrikb.se',     theme:'vader'},
+    {text:'Fågelkollen', url:'https://fagelkollen.henrikb.se', theme:'fagel'},
+    {text:'HV71',        url:'?t=HV71',                        theme:'hv'}
+  ],
   // Kort text överst på en taggs sida (valfritt)
   intros: {
     'Teknik':'Saker jag testar och bygger.',
@@ -205,6 +241,11 @@ const CONFIG = {
 };
 /* ================================================== */
 
+const ICONS={
+  vader:'<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="9" r="4" fill="#F7C548"/><g stroke="#F7C548" stroke-width="1.6" stroke-linecap="round"><path d="M9 1.8v1.7M9 14.5v1.7M1.8 9h1.7M3.9 3.9l1.2 1.2M14.1 3.9l-1.2 1.2M3.9 14.1l1.2-1.2"/></g><path d="M10.5 20.5h8.2a3.3 3.3 0 0 0 .3-6.6 4.6 4.6 0 0 0-8.8 1.2 2.7 2.7 0 0 0 .3 5.4z" fill="#F4F8FC"/></svg>',
+  fagel:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 20c4-1 6-3 7.5-6" stroke="#C9B37E" stroke-width="1.5" fill="none" stroke-linecap="round"/><path d="M14.5 5.5a3 3 0 0 1 4.6 1.3l2.4.7-2.3 1c-.2 4.2-3.3 7.4-7.7 7.6-1.7.1-3-.3-4.5-1.1 3.5-.6 5.6-2.6 6.2-5.3.4-1.7.2-3 1.3-4.2z" fill="#F2F5EA"/><circle cx="16.6" cy="7" r=".9" fill="#2E4A1F"/><path d="M13.6 10.5c-1.2 2-3 3.1-5.4 3.4" stroke="#E07B39" stroke-width="1.6" fill="none" stroke-linecap="round"/></svg>',
+  hv:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 3l9.5 13.5H19a1.5 1.5 0 0 1 0 3h-6.3a2 2 0 0 1-1.6-.8L1.6 4.8z" fill="#FCD213"/><ellipse cx="17" cy="11.5" rx="4" ry="1.6" fill="#F4F6FA"/><path d="M13 11.5v1.4c0 .9 1.8 1.6 4 1.6s4-.7 4-1.6v-1.4" fill="#C9D2E3"/></svg>'
+};
 const MONTHS=['januari','februari','mars','april','maj','juni','juli','augusti','september','oktober','november','december'];
 const $=id=>document.getElementById(id);
 function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
@@ -258,7 +299,8 @@ function tagLine(p){
 }
 function feedItem(p){
   const img=p.image?`<img src="${esc(p.image)}" alt="" loading="lazy">`:'';
-  return `<li><a href="?p=${encodeURIComponent(p.id)}"${img?'':' class="noimg"'}>
+  const hv=tagsOf(p).some(t=>same(t,'HV71'));
+  return `<li${hv?' class="hv"':''}><a href="?p=${encodeURIComponent(p.id)}"${img?'':' class="noimg"'}>
     <div>
       <div class="meta">${tagLine(p)}<time datetime="${esc(p.date)}">${niceDate(p.date)}</time></div>
       <h3>${esc(p.title)}</h3>
@@ -281,18 +323,14 @@ function viewHome(posts){
   const latest=posts.filter(p=>p.kind!=='projekt').slice(0,CONFIG.feedLimit);
   document.title='henrikb.se';
   return `
-  <section class="hero">
-    <img src="assets/logo.svg" alt="henrikb.se-loggan: granskog, sjö och sol" width="112" height="112">
-    <div class="hero-text">
-      <h1 class="site-title">henrikb<span class="dot">.</span>se</h1>
-      <figure class="quote">
-        <blockquote lang="en">We don’t rent pigs.</blockquote>
-        <figcaption><cite>Lonesome Dove</cite>, Larry McMurtry</figcaption>
-      </figure>
-    </div>
-    <p class="about">Sidan används mest som testyta för grejer, saker, prints, teknik och annat som jag behöver ladda upp för att testa. Allt blir inte bra!</p>
+  <section class="banner">
+    <h1 class="sr">henrikb.se</h1>
+    <img src="assets/header.webp" alt="henrikb.se – We don’t rent pigs." width="3000" height="408">
   </section>
-  <img class="divider" src="assets/divider.webp" alt="" width="760" height="41">
+  <div class="intro">
+    <p class="tagline">En testyta för allt!</p>
+    ${CONFIG.shortcuts.length?`<ul class="shortcuts" aria-label="Mina andra sidor">${CONFIG.shortcuts.map(l=>`<li><a class="sc-${esc(l.theme||'')}" href="${esc(l.url)}">${ICONS[l.theme]||''}${esc(l.text)}</a></li>`).join('')}</ul>`:''}
+  </div>
 
   <section class="block" aria-labelledby="h-senaste">
     <h2 id="h-senaste">Senaste</h2>
